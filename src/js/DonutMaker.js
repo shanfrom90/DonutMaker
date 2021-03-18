@@ -3,7 +3,7 @@ class Donut {
     this.donutCount = 0;
 
     this.numOfAutoClickers = 0;
-    this.autoClickcost = 100;
+    this.autoClickCost = 100;
 
     this.numofMultipliers = 0;
     this.mulitplierCost = 10;
@@ -23,18 +23,36 @@ class Donut {
     }
 
     getAutoClickCost(){
-        return this.autoClickcost;
+        return this.autoClickCost;
     }
-    getMulitplierCount(){
-        return this.numofMultipliers;
+    increaseAutoClickCost(){
+        this.autoClickCost = this.numOfAutoClickers * .1;
     }
-    getMulitplierCost(){
-        return this.mulitplierCost;
+    purchaseAutoClick(){
+        if(this.donutCount >= this.autoClickCost){
+            this.donutCount = this.donutCount - this.autoClickCost;
+            this.numOfAutoClickers++;
+            this.increaseAutoClickCost();
+        }
     }
 
-    getDonutsPerClick(){
-        return this.donutsPerClick;
+    activateAutoClick() {
+        this.donutCount = this.donutCount + this.numOfAutoClickers;
     }
+    
+    
+
+    // getMulitplierCount(){
+    //     return this.numofMultipliers;
+    // }
+    // getMulitplierCost(){
+    //     return this.mulitplierCost;
+    // }
+    // //TODO increase multiplier cost, activate multiplier, purchase multiplier
+    // getDonutsPerClick(){
+    //     return this.donutsPerClick;
+    // }
+
     
 }
 
