@@ -13,6 +13,8 @@ const makeDonutButton= (donutButton, donutTotal, donutObj) =>{
         updateTotal(donutTotal, donutObj);
     })
 } 
-
+function buyAutoClicker(params) {
+    
+}
 
 makeDonutButton(donutButton,donutTotal,donutObj);
