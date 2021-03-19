@@ -1,3 +1,15 @@
+function UpdateText() {
+    donutTotal.innerText = "Donuts: " + donutObj.getDonutNumber().toFixed(2);
+
+    autoClickCost.innerText = donutObj.getAutoClickCost().toFixed(2);
+    autoClickerTotal.innerText =  donutObj.getAutoClickCount();
+
+    multiCost.innerText = "Multiplier Cost: " + donutObj.getMultiplierCost().toFixed(2);
+    multiTotal.innerText = "Multiplier: " + donutObj.getMultiplierCount().toFixed(2) + "x Donuts";
+    
+    dps.innerText = "Donuts Per Second:" +  donutObj.getDonutsPerClick().toFixed(2);
+
+    } 
 const donutObj = new Donut();
 const donutButton = document.getElementById('donutMaker');
 const donutTotal = document.getElementById('donutTotal');
@@ -15,7 +27,6 @@ const reset = document.getElementById('reset');
 
 const autoClicker = setInterval(autoClick, 1000);
 
- 
 function autoClick(){
     donutObj.activateAutoClick();
     UpdateText();
@@ -23,15 +34,40 @@ function autoClick(){
 }
 
 
+function EnableAutoClickButton() {
+    if(donutObj.donutCount >= donutObj.autoClickCost){
+        autoClickButton.removeAttribute('disabled');
+    }
+
+    else{
+        autoClickButton.disabled = true;
+    }
+   
+    //need to get it to gray back out when they don't have enough again, else statement doesn't seem to be working
+}
+
+function EnableMultiplierButton(){
+    if(donutObj.donutCount >= donutObj.multiplierCost){
+        multiButton.removeAttribute('disabled');
+    }
+    else{
+        multiButton.disabled = true;
+    }
+    //need to get it to gray back out when they don't have enough again, else statement doesn't seem to be working
+
+}
 const makeDonutButton = (donutButton, donutTotal, donutObj) =>{
    donutButton.addEventListener('click', ()=>{
         donutObj.addOneDonut();
+        EnableAutoClickButton();
+        EnableMultiplierButton();
         UpdateText();
     })
 } 
 
 const makeAutoClickButton = (autoClickerTotal, autoClickButton, autoClickCost, donutObj)=>{
     autoClickButton.addEventListener('click', ()=>{
+        //add if statement if it returns true (if they have enough autoclickers)
         donutObj.purchaseAutoClick();
         UpdateText();
     })
@@ -58,18 +94,6 @@ makeMultiButton(donutObj, multiCost, multiButton, multiTotal);
 makeResetButton();
 
 
-function UpdateText() {
-    donutTotal.innerText = "Donuts: " + donutObj.getDonutNumber().toFixed(2);
-
-    autoClickCost.innerText = donutObj.getAutoClickCost().toFixed(2);
-    autoClickerTotal.innerText =  donutObj.getAutoClickCount();
-
-    multiCost.innerText = "Multiplier Cost: " + donutObj.getMultiplierCost().toFixed(2);
-    multiTotal.innerText = "Multiplier: " + donutObj.getMultiplierCount().toFixed(2) + "x Donuts";
-    
-    //dps.innerText = "Donuts Per Second:" + (donutObj.getAutoClickCount() * donutObj.getMultiplierCount());
-
-    } 
 UpdateText(); 
 
 
