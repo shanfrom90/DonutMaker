@@ -1,23 +1,27 @@
 class Donut {
     constructor() {
-    this.donutCount = 0;
+    this.donutCount =  0;
+    this.donutsPerClick = 1;
 
     this.numOfAutoClickers = 0;
     this.autoClickCost = 100;
 
     this.numofMultipliers = 0;
-    this.mulitplierCost = 10;
+    this.multiplierCost = 10;
 
-    this.donutsPerClick = Math.pow(1.2, this.numofMultipliers);
     } 
     addOneDonut() {
-        this.donutCount++;
+        this.donutCount+=Math.pow(this.donutsPerClick, this.numofMultipliers);
+        this.donutCount = Math.floor(this.donutCount);
     }
     
-     getDonutNumber(){
+    getDonutNumber(){
         return this.donutCount;
     }
-
+    
+    getDonutsPerClick(){
+        return this.donutsPerClick;
+    }
     getAutoClickCount(){
         return this.numOfAutoClickers;
     }
@@ -26,32 +30,46 @@ class Donut {
         return this.autoClickCost;
     }
     increaseAutoClickCost(){
-        this.autoClickCost = this.numOfAutoClickers * .1;
+        this.autoClickCost = this.autoClickCost + this.autoClickCost * .1;
     }
     purchaseAutoClick(){
         if(this.donutCount >= this.autoClickCost){
             this.donutCount = this.donutCount - this.autoClickCost;
-            this.numOfAutoClickers++;
             this.increaseAutoClickCost();
+            this.numOfAutoClickers ++;
+             //return true;
         }
+        //else{
+            //return false;
+        //}
     }
-
+  
     activateAutoClick() {
         this.donutCount = this.donutCount + this.numOfAutoClickers;
     }
     
-    
 
-    // getMulitplierCount(){
-    //     return this.numofMultipliers;
-    // }
-    // getMulitplierCost(){
-    //     return this.mulitplierCost;
-    // }
-    // //TODO increase multiplier cost, activate multiplier, purchase multiplier
-    // getDonutsPerClick(){
-    //     return this.donutsPerClick;
-    // }
+    getMultiplierCount(){
+        return this.numofMultipliers;
+    }
+
+    getMultiplierCost(){
+        return this.multiplierCost;
+    }
+    purchaseMultiplier(){
+        if(this.donutCount >= this.multiplierCost){
+            this.donutCount = this.donutCount - this.multiplierCost;
+            this.numofMultipliers ++;
+            this.activateMultiplier();
+            this.increaseMultiplierCost();
+        }
+    }
+    activateMultiplier(){
+        this.donutsPerClick = this.donutsPerClick + this.donutsPerClick * .2;
+    }
+    increaseMultiplierCost(){
+        this.multiplierCost = this.multiplierCost + this.multiplierCost * .1;
+    }
 
     
 }
