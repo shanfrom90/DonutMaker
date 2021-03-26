@@ -37,11 +37,7 @@ class Donut {
             this.donutCount = this.donutCount - this.autoClickCost;
             this.increaseAutoClickCost();
             this.numOfAutoClickers ++;
-             //return true;
         }
-        //else{
-            //return false;
-        //}
     }
   
     activateAutoClick() {
