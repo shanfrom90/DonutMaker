@@ -1,14 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 4 Project</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/src/css/style.css">
+        <title>Donut Maker Game</title>
+    </head>
+    <body>
+        <header>
+                <h1 id="title">Donut Maker</h1>
+                <button id = "aboutFredBtn" class="modalbtn">About the Baker </button>
+                <div id = "aboutFredModal" class= "modal">
+                    <div class= "modal-content">
+                        <header class= "modalHeader">
+                            <h2>About Fred the Baker Baking Company</h2>
+                            <span class="close">&times;</span>
+                        </header>
+                        <div class= "modalContainer">
+                        <p>Fred the Baker has been baking actual donuts for over 40 years. He wanted a way for all of the world to enjoy his donuts, and the idea for Donut Maker was born! After your hand is tired from all of that hard work clicking, treat yourself to the real thing.</p>
+                    </div>
+                    <footer class="modalFooter">
+                        <p></p>
+                      </footer>
+                    </div>
+                </div>
+            
+                <button id = "abtMeBtn" class="modalbtn">About the Code Baker</button>
+                <div id = "abtMeModal" class= "modal">
+                    <div class= "modal-content">
+                        <header class= "modalHeader">
+                            <h2>Donut Maker's Code Baker</h2>
+                            <span class="close">&times;</span>
+                        </header>
+                        <div class= "modalContainer">
+                        <p>Donut Maker was created by full-stack developer Shannon Adams. Learn more about Shannon and connect with her <a href="https://shanfrom90.github.io/">here</a> or check out Shannon's projects on <a href="https://github.com/shanfrom90">Github</a>.</p>
+                    </div>
+                    <footer class="modalFooter">
+                        <p></p>
+                      </footer>
+                    </div>
+                </div>
+            
+                <button id = "inspirationBtn" class="modalbtn">Donut Maker Inspiration </button>
+                <div id = "inspirationModal" class= "modal">
+                    <div class= "modal-content">
+                        <header class= "modalHeader">
+                            <h2>An Ode to Cookie Clicker</h2>
+                            <span class="close">&times;</span>
+                        </header>
+                        <div class= "modalContainer">
+                        <p>Donut Maker is a beginner's tribute to <a href="https://orteil.dashnet.org/cookieclicker/" target= "_blank">Cookie Clicker!</a></p>
+                    </div>
+                    <footer class="modalFooter">
+                        <p></p>
+                      </footer>
+                    </div>
+                </div>
+</header>
+<main>
+        <div id = 'donutTotal'> </div>
+        <div id = 'dps'></div>
+        <button id = "donutMaker" class="gameBtn">Make a Donut</button>
+
+        
+        <div id = 'autoTotal'> 0 </div>
+        <div id = "autoClickCost">100</div>
+        <button id = "autoClicker" disabled class="gameBtn">Purchase Autoclicker</button>
+        
+        <div id = 'multiTotal'>Multiplier Total: </div>
+        <div id = 'multiCost'>10</div>
+        <button id = "multiplier" disabled class="gameBtn">Purchase Multiplier</button>
+
+        <div>
+            <button id = 'reset'>Start Over</button>
+        </div>
+
+    </main>
     <div class="container">
         <div class="anchor"></div>
     </div>
-    <script src="/src/app.js"></script>
+    <script src="src/js/DonutMaker.js"></script>
+    <script src="src/js/app.js"></script>
+<footer>&copy 2021 Fred the Baker Baking Company</footer>
 </body>
 </html>
